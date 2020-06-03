@@ -1,4 +1,6 @@
-window.onload(getCovidStatistics());
+window.onload = () => {
+  getCovidStatistics();
+};
 
 function getCovidStatistics() {
   fetch('https://coronavirus-tracker-api.herokuapp.com/v2/locations/223')
@@ -13,4 +15,6 @@ function getCovidStatistics() {
       document.getElementById('population').innerHTML = data.location.country_population.toLocaleString();
     })
     .catch(err => console.log('error'))
+
+    setTimeout(getCovidStatistics, 43200000);
 }
